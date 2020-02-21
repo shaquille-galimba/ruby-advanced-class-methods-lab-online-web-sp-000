@@ -23,9 +23,8 @@ class Song
   end
 
   def self.create_by_name(name)
-    song = self.new
+    song = self.create
     song.name = name
-    song.save
     song
   end
 
@@ -34,11 +33,7 @@ class Song
   end
 
   def self.find_or_create_by_name(name)
-    if self.find_by_name(name)
-      self.find_by_name(name)
-    else
-      self.create_by_name(name)
-    end
+    self.find_by_name(name) || self.create_by_name(name)
   end
 
   def self.alphabetical
@@ -61,10 +56,9 @@ class Song
     name = data[1].split(".")[0]
     artist_name = data[0]
 
-    song = self.new
+    song = self.create
     song.name = name
     song.artist_name = artist_name
-    song.save
     song
   end
 
