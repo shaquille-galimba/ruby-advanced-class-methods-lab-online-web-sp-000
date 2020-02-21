@@ -56,10 +56,9 @@ class Song
     name = data[1].split(".")[0]
     artist_name = data[0]
 
-    song = self.new
+    song = self.create
     song.name = name
     song.artist_name = artist_name
-    song.save
     song
   end
 
